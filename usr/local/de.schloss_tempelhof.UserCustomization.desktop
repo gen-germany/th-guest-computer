@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name="Tempelhof User Customization"
+Name[de]="Tempelhof Nutzeranpassung"
+NoDisplay=true
+Exec="/usr/local/sbin/customize-guest-user.sh"
+Terminal=false
+X-GNOME-Autostart-enabled=true

@@ -1,0 +1,11 @@
+[Unit]
+Description=Create guest user during boot up and delete it after log out
+
+[Service]
+ExecStart=/usr/local/sbin/add-guest-user.sh
+ExecStop=/usr/local/sbin/delete-guest-user.sh
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

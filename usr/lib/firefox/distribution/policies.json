@@ -1,0 +1,105 @@
+{
+  "policies": {
+    "BlockAboutAddons": true,
+    "BlockAboutConfig": true,
+    "BlockAboutProfiles": true,
+    "BlockAboutSupport": true,
+    "Bookmarks": [
+      {
+	"Placement": "toolbar",
+	"Title": "TH Homepage",
+	"URL": "https://www.schloss-tempelhof.de/"
+      },
+      {
+	"Placement": "toolbar",
+	"Title": "TH Mitfahrzentrale",
+	"URL": "http://mitfahrboerse.schloss-tempelhof.de/"
+      },
+      {
+	"Placement": "toolbar",
+	"Title": "TH Wetter",
+	"URL": "http://wetter.schloss-tempelhof.de/"
+      },
+      {
+	"Placement": "toolbar",
+	"Title": "Bahn.de",
+	"URL": "https://www.bahn.de/p/view/index.shtml"
+      },
+      {
+	"Placement": "toolbar",
+	"Title": "MetaGer Suchmachschine",
+	"URL": "https://metager.de/"
+      }
+    ],
+    "Cookies": {
+      "AcceptThirdParty": "never",
+      "Default": false,
+      "ExpireAtSessionEnd": false,
+      "RejectTracker": true
+    },
+    "DisableDeveloperTools": true,
+    "DisableFeedbackCommands": true,
+    "DisableFirefoxAccounts": true,
+    "DisableFirefoxStudies": true,
+    "DisableFormHistory": true,
+    "DisableMasterPasswordCreation": true,
+    "DisablePocket": true,
+    "DisableProfileImport": true,
+    "DisableProfileRefresh": true,
+    "DisableSafeMode": true,
+    "DisableSetDesktopBackground": true,
+    "DisableTelemetry": true,
+    "DisplayBookmarksToolbar": true,
+    "EnableTrackingProtection": {
+      "Cryptomining": true,
+      "Fingerprinting": true,
+      "Value": true
+    },
+    "ExtensionSettings": {
+      "httpsEverywhere": {
+	"install_url": "https://addons.mozilla.org/firefox/downloads/latest/https-everywhere/latest.xpi",
+	"installation_mode": "force_installed"
+      },
+      "uBlockOrigin": {
+	"install_url": "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi",
+	"installation_mode": "force_installed"
+      }
+    },
+    "ExtensionUpdate": true,
+    "FirefoxHome": {
+      "Highlights": false,
+      "Locked": true,
+      "Pocket": false,
+      "Search": false,
+      "Snippets": false,
+      "TopSites": false
+    },
+    "Homepage": {
+      "Locked": true,
+      "StartPage": "homepage",
+      "URL": "https://www.schloss-tempelhof.de/"
+    },
+    "NewTabPage": false,
+    "NoDefaultBookmarks": true,
+    "OfferToSaveLogins": false,
+    "OfferToSaveLoginsDefault": false,
+    "OverrideFirstRunPage": "",
+    "OverridePostUpdatePage": "",
+    "PasswordManagerEnabled": false,
+    "Preferences": {
+      "browser.fixup.dns_first_for_single_words": false,
+      "datareporting.policy.dataSubmissionPolicyBypassNotification": true,
+      "dom.event.contextmenu.enabled": false,
+      "security.ssl.errorReporting.enabled": false
+    },
+    "Proxy": {
+      "AutoLogin": true,
+      "Locked": true,
+      "Mode": "none",
+      "SOCKSVersion": 4,
+      "UseHTTPProxyForAllProtocols": true,
+      "UseProxyForDNS": false
+    }
+  }
+}
+

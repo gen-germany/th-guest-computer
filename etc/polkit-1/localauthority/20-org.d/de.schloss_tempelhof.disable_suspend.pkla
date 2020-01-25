@@ -1,0 +1,27 @@
+[Disable suspend (upower)]
+Identity=unix-user:gastnutzer
+Action=org.freedesktop.upower.suspend
+ResultAny=no
+ResultInactive=no
+ResultActive=no
+
+[Disable suspend (logind)]
+Identity=unix-user:gastnutzer
+Action=org.freedesktop.login1.suspend
+ResultAny=no
+ResultInactive=no
+ResultActive=no
+
+[Disable suspend for all sessions (logind)]
+Identity=unix-user:gastnutzer
+Action=org.freedesktop.login1.suspend-multiple-sessions
+ResultAny=no
+ResultInactive=no
+ResultActive=no
+
+[Disable suspend while inhibited (logind)]
+Identity=unix-user:gastnutzer
+Action=org.freedesktop.login1.suspend-ignore-inhibit
+ResultAny=no
+ResultInactive=no
+ResultActive=no
