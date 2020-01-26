@@ -1,15 +1,15 @@
 # TH Guest computer
 This repository contains all files needed to set up/customize the guest computer at [Schloss Tempelhof](https://www.schloss-tempelhof.de/).
 
-The guest user will be freshly created on every boot and deleted on every shut down to prevent leaving poersonal information. The user account gets customized.
+The guest user will be freshly created on every boot and deleted on every shut down to prevent leaving personal information. The user account gets customized.
 
 ## Usage
 ### Preparation
-1. Install a current Ubuntu LTS Desktop edition (as time of writing: Ubuntu 18.04.3)
+1. Install a current Ubuntu LTS Desktop edition (at time of writing: Ubuntu 18.04.3)
   1. Follow graphical installer to set hostname, timezone, etc according to your needs
   2. Create an administrative user `administrator` during installation
     *Note:* if you want to choose a different user name, you have to rename the file `var/lib/AccountsService/users/administrator` accordingly.
-2. install additional software on the computer: `sudo apt-get install gimp gimp-help-de brasero vcdimager gstreamer1.0-plugins-bad nautilus-image-converter vlc libdvdcss2`
+2. Install additional software on the computer: `sudo apt-get install gimp gimp-help-de brasero vcdimager gstreamer1.0-plugins-bad nautilus-image-converter vlc libdvdcss2`
 
 ### Provisioning
 *Note:* As only a single computer is used, the process was not automted by. e.g. [Ansible](https://en.wikipedia.org/wiki/Ansible_(software)), but doing so should be trivial.
@@ -28,23 +28,23 @@ The guest user will be freshly created on every boot and deleted on every shut d
 
 ## Features
 ### Remove administrator user from user list at logon screen
-*Reason:* Don't wake sleeping dogs
-*Source:* [https://askubuntu.com/questions/92349/how-do-i-hide-a-particular-user-from-the-login-screen]
+*Reason:* Don't wake sleeping dogs\
+*Source:* [https://askubuntu.com/questions/92349/how-do-i-hide-a-particular-user-from-the-login-screen]\
 *File:* `/var/lib/AccountsService/users/administrator`
 
 ### Prevent suspend, hibernate, log-off for guest user
-*Reason:* After every usage a restart is intended, to ensure deletion of all personal data
+*Reason:* After every usage a restart is intended, to ensure deletion of all personal data\
 *Source:*
-[https://wiki.ubuntuusers.de/PolicyKit/]
-[https://askubuntu.com/questions/972114/ubuntu-17-10-cant-disable-suspend-with-systemd-hybrid-sleep]
-[https://sites.google.com/site/easytipsforlinux/disable-hibernate-and-suspend]
-[https://askubuntu.com/questions/93542/how-to-disable-shutdown-reboot-suspend-hibernate]
-[https://www.freedesktop.org/software/polkit/docs/0.105/pklocalauthority.8.html]
+  - [https://wiki.ubuntuusers.de/PolicyKit/]
+  - [https://askubuntu.com/questions/972114/ubuntu-17-10-cant-disable-suspend-with-systemd-hybrid-sleep]
+  - [https://sites.google.com/site/easytipsforlinux/disable-hibernate-and-suspend]
+  - [https://askubuntu.com/questions/93542/how-to-disable-shutdown-reboot-suspend-hibernate]
+  - [https://www.freedesktop.org/software/polkit/docs/0.105/pklocalauthority.8.html]
 *File:*
-`/etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_hibernate.pkla`
-`/etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_suspend.pkla`
-`/etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_lock_sessions.pkla`
-`/usr/local/sbin/customize-guest-user.sh`
+  - [`/etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_hibernate.pkla`](etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_hibernate.pkla)
+  - [`/etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_suspend.pkla`](etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_suspend.pkla)
+  - [`/etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_lock_sessions.pkla`](etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_lock_sessions.pkla)
+  - [`/usr/local/sbin/customize-guest-user.sh`](usr/local/sbin/customize-guest-user.sh)
 *Note:* Preventing to log off (without to shut down) seems to not work
 
 ### Forced restart every nigth (with warning dialogue beforehand)
