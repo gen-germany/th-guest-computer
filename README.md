@@ -40,6 +40,7 @@ The guest user will be freshly created on every boot and deleted on every shut d
   - [https://sites.google.com/site/easytipsforlinux/disable-hibernate-and-suspend]
   - [https://askubuntu.com/questions/93542/how-to-disable-shutdown-reboot-suspend-hibernate]
   - [https://www.freedesktop.org/software/polkit/docs/0.105/pklocalauthority.8.html]
+
 *File:*
   - [`/etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_hibernate.pkla`](etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_hibernate.pkla)
   - [`/etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_suspend.pkla`](etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_suspend.pkla)
@@ -48,7 +49,7 @@ The guest user will be freshly created on every boot and deleted on every shut d
 *Note:* Preventing to log off (without to shut down) seems to not work
 
 ### Forced restart every nigth (with warning dialogue beforehand)
-*Reason:* After every usage a restart is intended, to ensure deletion of all personal data
+*Reason:* After every usage a restart is intended, to ensure deletion of all personal data\
 *Source:* 
 [https://askubuntu.com/questions/567955/automatic-shutdown-at-specified-times]
 [https://serverfault.com/questions/229021/how-to-use-crontab-to-display-something-to-users-on-display-0-0-or-run-a-gui-pr]
@@ -59,38 +60,39 @@ The guest user will be freshly created on every boot and deleted on every shut d
 `/usr/local/sbin/customize-guest-user.sh`
 
 ### Create guest user during boot and delete it during shut down
-*Reason:* Every guest shall start with an empty user profile, no personal data shall be left over
+*Reason:* Every guest shall start with an empty user profile, no personal data shall be left over\
 *Source:* 
-[https://stackoverflow.com/questions/2150882/how-to-automatically-add-user-account-and-password-with-a-bash-script]
-[https://unix.stackexchange.com/questions/57796/how-can-i-assign-an-initial-default-password-to-a-user-in-linux/57806#57806]
-[https://askubuntu.com/questions/83532/how-do-i-set-up-new-users-with-skel]
-[https://askubuntu.com/questions/420784/what-do-the-disabled-login-and-gecos-options-of-adduser-command-stand]
-[https://de.wikipedia.org/wiki/GECOS-Feld]
-[https://askubuntu.com/questions/814/how-to-run-scripts-on-start-up]
-[https://askubuntu.com/questions/293312/execute-a-script-upon-logout-reboot-shutdown-in-ubuntu]
-[https://askubuntu.com/questions/1152179/how-can-i-disable-the-connect-your-online-accounts-dialog-from-the-command-li]
-[https://askubuntu.com/questions/1028822/disable-the-new-ubuntu-18-04-welcome-screen]
+  - [https://stackoverflow.com/questions/2150882/how-to-automatically-add-user-account-and-password-with-a-bash-script]
+  - [https://unix.stackexchange.com/questions/57796/how-can-i-assign-an-initial-default-password-to-a-user-in-linux/57806#57806]
+  - [https://askubuntu.com/questions/83532/how-do-i-set-up-new-users-with-skel]
+  - [https://askubuntu.com/questions/420784/what-do-the-disabled-login-and-gecos-options-of-adduser-command-stand]
+  - [https://de.wikipedia.org/wiki/GECOS-Feld]
+  - [https://askubuntu.com/questions/814/how-to-run-scripts-on-start-up]
+  - [https://askubuntu.com/questions/293312/execute-a-script-upon-logout-reboot-shutdown-in-ubuntu]
+  - [https://askubuntu.com/questions/1152179/how-can-i-disable-the-connect-your-online-accounts-dialog-from-the-command-li]
+  - [https://askubuntu.com/questions/1028822/disable-the-new-ubuntu-18-04-welcome-screen]
+
 *File:* 
 `/usr/local/sbin/add-guest-user.sh`
 `/usr/local/sbin/delete-guest-user.sh`
 `/etc/systemd/system/add-and-delete-guest-user.service`
 
 ### Customize guest user
-*Reason:* Provide Tempelhof branding, help and limit rights of user
+*Reason:* Provide Tempelhof branding, help and limit rights of user\
 *Source:* 
-[https://askubuntu.com/questions/270049/how-to-run-a-command-at-login]
-[https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html]
-[https://askubuntu.com/questions/66914/how-to-change-desktop-background-from-command-line-in-unity]
+  - [https://askubuntu.com/questions/270049/how-to-run-a-command-at-login]
+  - [https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html]
+  - [https://askubuntu.com/questions/66914/how-to-change-desktop-background-from-command-line-in-unity]
 *File:* 
 `/usr/local/de.schloss_tempelhof.UserCustomization.desktop`
 `/usr/local/sbin/customize-guest-user.sh`
 
 ### Customize Firefox
-*Reason:* Provide Tempelhof branding and limit rights of user
+*Reason:* Provide Tempelhof branding and limit rights of user\
 *Source:* 
-[https://support.mozilla.org/de/kb/firefox-mithilfe-der-datei-policiesjson-anpassen]
-[https://github.com/mozilla/policy-templates/blob/master/README.md]
-[https://addons.mozilla.org/en-US/firefox/addon/enterprise-policy-generator/]
+  - [https://support.mozilla.org/de/kb/firefox-mithilfe-der-datei-policiesjson-anpassen]
+  - [https://github.com/mozilla/policy-templates/blob/master/README.md]
+  - [https://addons.mozilla.org/en-US/firefox/addon/enterprise-policy-generator/]\
 *File:* `/usr/lib/firefox/distribution/policies.json`
 *Note:* Customization is valid for all users!
 
