@@ -5,7 +5,7 @@ The guest user will be freshly created on every boot and deleted on every shut d
 
 ## Usage
 ### Preparation
-1. Install a current Ubuntu LTS Desktop edition (at time of writing: Ubuntu 18.04.3)
+1. Install a current Ubuntu LTS Desktop edition (at time of writing: Ubuntu 22.04)
   1. Follow graphical installer to set hostname, timezone, etc according to your needs
   2. Create an administrative user `administrator` during installation
     *Note:* if you want to choose a different user name, you have to rename the file `var/lib/AccountsService/users/administrator` accordingly.
@@ -22,15 +22,20 @@ The guest user will be freshly created on every boot and deleted on every shut d
   4. `/etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_hibernate.pkla`
   5. `/etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_suspend.pkla`
   6. `/etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_lock_sessions.pkla`
-3. Copy the files over to their final destionation on the guest computer
-   *Note:* If the file already exists (e.g. `/etc/crontab`) add its content to the existing file.
+3. Copy the files over to their final destionation on the guest computer\
+   *Note:* If the file already exists (e.g. `/etc/crontab`) add its content to the existing file.\
    *Note:* Double check that file permissions fit.
 
 ## Features
+### Automatic updates
+*Reason:* Run (not only security) updates automatically in background to bother guest user as little as possible\
+*Source:* [https://wiki.ubuntuusers.de/Aktualisierungen/Konfiguration/]
+*File:* [`/etc/apt/apt.conf.d/50unattended-upgrades`](/etc/apt/apt.conf.d/50unattended-upgrades)
+
 ### Remove administrator user from user list at logon screen
 *Reason:* Don't wake sleeping dogs\
 *Source:* [https://askubuntu.com/questions/92349/how-do-i-hide-a-particular-user-from-the-login-screen]\
-*File:* `/var/lib/AccountsService/users/administrator`
+*File:* [`/var/lib/AccountsService/users/administrator`](/var/lib/AccountsService/users/administrator)
 
 ### Prevent suspend, hibernate, log-off for guest user
 *Reason:* After every usage a restart is intended, to ensure deletion of all personal data\
@@ -41,12 +46,12 @@ The guest user will be freshly created on every boot and deleted on every shut d
   - [https://askubuntu.com/questions/93542/how-to-disable-shutdown-reboot-suspend-hibernate]
   - [https://www.freedesktop.org/software/polkit/docs/0.105/pklocalauthority.8.html]
 
-*File:*
+*Files:*
   - [`/etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_hibernate.pkla`](etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_hibernate.pkla)
   - [`/etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_suspend.pkla`](etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_suspend.pkla)
   - [`/etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_lock_sessions.pkla`](etc/polkit-1/localauthority/20-org.d/de.schloss_tempelhof.disable_lock_sessions.pkla)
-  - [`/usr/local/sbin/customize-guest-user.sh`](usr/local/sbin/customize-guest-user.sh)
-*Note:* Preventing to log off (without to shut down) seems to not work
+  - [`/usr/local/sbin/customize-guest-user.sh`](usr/local/sbin/customize-guest-user.sh)\
+*Note:* Preventing to log off (without to shut down) seems to *not* work
 
 ### Forced restart every nigth (with warning dialogue beforehand)
 *Reason:* After every usage a restart is intended, to ensure deletion of all personal data\
@@ -54,10 +59,10 @@ The guest user will be freshly created on every boot and deleted on every shut d
 [https://askubuntu.com/questions/567955/automatic-shutdown-at-specified-times]
 [https://serverfault.com/questions/229021/how-to-use-crontab-to-display-something-to-users-on-display-0-0-or-run-a-gui-pr]
 [https://wiki.ubuntuusers.de/Zenity/]
-*File:* 
-`/usr/local/sbin/daily-shutdown.sh`
-`/etc/crontab`
-`/usr/local/sbin/customize-guest-user.sh`
+*Files:* 
+  - [`/usr/local/sbin/daily-shutdown.sh`](/usr/local/sbin/daily-shutdown.sh)
+  - [`/etc/crontab`](/etc/crontab)
+  - [`/usr/local/sbin/customize-guest-user.sh`](/usr/local/sbin/customize-guest-user.sh)
 
 ### Create guest user during boot and delete it during shut down
 *Reason:* Every guest shall start with an empty user profile, no personal data shall be left over\
@@ -72,10 +77,10 @@ The guest user will be freshly created on every boot and deleted on every shut d
   - [https://askubuntu.com/questions/1152179/how-can-i-disable-the-connect-your-online-accounts-dialog-from-the-command-li]
   - [https://askubuntu.com/questions/1028822/disable-the-new-ubuntu-18-04-welcome-screen]
 
-*File:* 
-`/usr/local/sbin/add-guest-user.sh`
-`/usr/local/sbin/delete-guest-user.sh`
-`/etc/systemd/system/add-and-delete-guest-user.service`
+*Files:* 
+  - [`/usr/local/sbin/add-guest-user.sh`](/usr/local/sbin/add-guest-user.sh)
+  - [`/usr/local/sbin/delete-guest-user.sh`](/usr/local/sbin/delete-guest-user.sh)
+  - [`/etc/systemd/system/add-and-delete-guest-user.service`](/etc/systemd/system/add-and-delete-guest-user.service)
 
 ### Customize guest user
 *Reason:* Provide Tempelhof branding, help and limit rights of user\
@@ -83,9 +88,11 @@ The guest user will be freshly created on every boot and deleted on every shut d
   - [https://askubuntu.com/questions/270049/how-to-run-a-command-at-login]
   - [https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html]
   - [https://askubuntu.com/questions/66914/how-to-change-desktop-background-from-command-line-in-unity]
-*File:* 
-`/usr/local/de.schloss_tempelhof.UserCustomization.desktop`
-`/usr/local/sbin/customize-guest-user.sh`
+*Files:* 
+  - [`/usr/local/de.schloss_tempelhof.UserCustomization.desktop`](/usr/local/de.schloss_tempelhof.UserCustomization.desktop)
+  - [`/usr/local/sbin/customize-guest-user.sh`](/usr/local/sbin/customize-guest-user.sh)
+  - [`/usr/local/background.png`](/usr/local/background.png)\
+*Note:* Due a bug (potentially in [Mutter](https://gitlab.gnome.org/GNOME/mutter)) in Ubuntu 22.04 ist is not possible to set a background color (other than black) in parallel to using a background image.
 
 ### Customize Firefox
 *Reason:* Provide Tempelhof branding and limit rights of user\
@@ -93,7 +100,7 @@ The guest user will be freshly created on every boot and deleted on every shut d
   - [https://support.mozilla.org/de/kb/firefox-mithilfe-der-datei-policiesjson-anpassen]
   - [https://github.com/mozilla/policy-templates/blob/master/README.md]
   - [https://addons.mozilla.org/en-US/firefox/addon/enterprise-policy-generator/]\
-*File:* `/usr/lib/firefox/distribution/policies.json`
+*File:* [`/etc/firefox/policies/policies.json`](/etc/firefox/policies/policies.json)\
 *Note:* Customization is valid for all users!
 
 ## License
